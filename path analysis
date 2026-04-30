@@ -1,0 +1,15 @@
+/* means*/
+proc calis data=xx  method=fiml;
+  var  mentalillness trauma eacesintensity age sex educationlev housing timeincarcerated ;
+  /* or eacesdoses */ 
+  run;
+
+/* path analysis*/
+proc calis data=xx method=fiml;
+   path 
+      trauma <--- eacesintesity, /* or eacesdoses */     
+      mentalillness <--- trauma  eacesintesity; /* or eacesdoses  */ 
+
+/* effpart calculates total, indirect, and direct effects */
+effpart mentalillness <--- acesintensity trauma_8; /* or eaxcesdoses */
+ run;
